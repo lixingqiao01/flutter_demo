@@ -19,4 +19,7 @@ samples, guidance on mobile development, and a full API reference.
 
 [floatingActionButton动画和TextOverflow踩坑](https://blog.csdn.net/qq_41912380/article/details/97612904)  
 [Flutter炫酷动画登陆按钮AnimatedLoginButton](https://blog.csdn.net/baoolong/article/details/86534154)  
-[谈一谈Flutter中的共享元素动画Hero](https://juejin.im/post/5bcd72aaf265da0a8e6dbe92)
+[谈一谈Flutter中的共享元素动画Hero](https://juejin.im/post/5bcd72aaf265da0a8e6dbe92)  
+[Flitter中文网文档](https://flutterchina.club/docs/)  
+[Dart快速入门](http://dart.goodev.org/guides/get-started)    
+[flutter BottomAppBar 实现不规则底部导航栏](https://blog.csdn.net/zl18603543572/article/details/94876972)
