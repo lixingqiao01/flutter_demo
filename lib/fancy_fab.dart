@@ -22,9 +22,10 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
   Animation<double> _animationIcon;
 
   Animation<double> _translateAddY;
-  Animation<double> _translateImage;
+  Animation<double> _translateImageX;
+  Animation<double> _translateImageY;
 
-  Curve _curve = Curves.easeOut;
+  Curve _curve = Curves.bounceIn;
   double _fabHeight = 56.0;
 
 //  final CurvedAnimation curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
@@ -53,7 +54,7 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
 
     _translateAddY = Tween<double>(
       begin: 0.0,
-      end: -80,
+      end: -100.0,
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Interval(
@@ -62,9 +63,20 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
         curve: _curve
       )
     ));
-    _translateImage = Tween<double>(
+    _translateImageX = Tween<double>(
       begin: 0.0,
-      end: -56.56854
+      end: -86.6
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Interval(
+        0.0,
+        0.75,
+        curve: _curve
+      )
+    ));
+    _translateImageY = Tween<double>(
+      begin: 0.0,
+      end: -50
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Interval(
@@ -128,7 +140,7 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
       onPressed: animate,
       tooltip: 'Toggle',
       child: AnimatedIcon(
-        icon: AnimatedIcons.menu_close,
+        icon: AnimatedIcons.add_event,
         progress: _animationIcon,
       ),
     );
@@ -164,11 +176,11 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
             child: add(),
           ),
           Transform(
-            transform: Matrix4.translationValues(_translateImage.value, _translateImage.value, 0.0),
+            transform: Matrix4.translationValues(_translateImageX.value, _translateImageY.value, 0.0),
             child: image(),
           ),
           Transform(
-            transform: Matrix4.translationValues(-_translateImage.value, _translateImage.value, 0.0),
+            transform: Matrix4.translationValues(-_translateImageX.value, _translateImageY.value, 0.0),
             child: inbox(),
           ),
           toggle(),
