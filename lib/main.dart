@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: bottomMenuBarPage(),
+//      home: MyHomePage(),
+    home: bottomMenuBarPage(),
     );
   }
 }
@@ -72,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text("ss"),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -119,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //        child: Icon(Icons.add),
 //      ), // This trailing comma makes auto-formatting nicer for build methods.
       floatingActionButton: FancyFab(),
+//    floatingActionButton: new Text("this is flotingActionButton"),
     );
   }
 }

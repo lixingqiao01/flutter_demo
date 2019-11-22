@@ -20,14 +20,19 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
   AnimationController _animationController;
   Animation<Color> _animationColor;
   Animation<double> _animationIcon;
-  Animation<double> _translateButton;
+
+  Animation<double> _translateAddY;
+  Animation<double> _translateImage;
+
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
+
+//  final CurvedAnimation curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
   @override
   void initState() {
     // TODO: implement initState
-    _animationController = AnimationController(vsync: this,duration: Duration(milliseconds: 500))..addListener((){
+    _animationController = AnimationController(vsync: this,duration: Duration(milliseconds: 200))..addListener((){
       setState(() {
 
       });
@@ -45,16 +50,28 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
         curve: _curve,
       ),
     ));
-    _translateButton = Tween<double>(
-      begin: _fabHeight,
-      end: -14.0,
+
+    _translateAddY = Tween<double>(
+      begin: 0.0,
+      end: -80,
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Interval(
         0.0,
         0.75,
-        curve: _curve,
-      ),
+        curve: _curve
+      )
+    ));
+    _translateImage = Tween<double>(
+      begin: 0.0,
+      end: -56.56854
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Interval(
+        0.0,
+        0.75,
+        curve: _curve
+      )
     ));
     super.initState();
   }
@@ -120,26 +137,43 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-//    print(_translateButton.value);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        Transform(
-          transform: Matrix4.translationValues(0.0, _translateButton.value * 3.0, 0.0),
-          child: add(),
-        ),
-        Transform(
-          transform: Matrix4.translationValues(0.0, _translateButton.value*2, 0.0),
-          child: image(),
-        ),
-        Transform(
-          transform: Matrix4.translationValues(0.0, _translateButton.value, 0.0),
-          child: inbox(),
-        ),
-//        add(),
-        toggle(),
-      ],
-    );
+//    print(_translateButton.value * 3);
+//    return Column(
+//      mainAxisAlignment: MainAxisAlignment.end,
+//      children: <Widget>[
+//        Transform(
+//          transform: Matrix4.translationValues(0.0,_translateButton.value * 3.0, 0.0),
+//          child: add(),
+//        ),
+//        Transform(
+//          transform: Matrix4.translationValues(_translateImageY.value,_translateImageX.value * 2, 0.0),
+//          child: image(),
+//        ),
+//        Transform(
+//          transform: Matrix4.translationValues(_translateY.value * 1.3, 56, 0.0),
+//          child: inbox(),
+//        ),
+////        add(),
+//        toggle(),
+//      ],
+//    );
+      return Stack(
+        children: <Widget>[
+          Transform(
+            transform: Matrix4.translationValues(0.0, _translateAddY.value, 0.0),
+            child: add(),
+          ),
+          Transform(
+            transform: Matrix4.translationValues(_translateImage.value, _translateImage.value, 0.0),
+            child: image(),
+          ),
+          Transform(
+            transform: Matrix4.translationValues(-_translateImage.value, _translateImage.value, 0.0),
+            child: inbox(),
+          ),
+          toggle(),
+        ],
+      );
   }
 
 }

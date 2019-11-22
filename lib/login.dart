@@ -38,13 +38,13 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
       child: Scaffold(
         body: pages[currentIndex],
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: (){
-            print("add press");
-          },
-        ),
-//        floatingActionButton: FancyFab(),
+//        floatingActionButton: FloatingActionButton(
+//          child: const Icon(Icons.add),
+//          onPressed: (){
+//            print("add press");
+//          },
+//        ),
+        floatingActionButton: FancyFab(),
 
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
