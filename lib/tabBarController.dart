@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'fancy_fab.dart';
+import 'page/home.dart';
 
 class bottomMenuBarPage extends StatefulWidget {
   bottomMenuBarPage();
@@ -146,7 +147,7 @@ class _ChildItemViewState extends State<ChildItemView> {
           title: new Text(widget._title),
         ),
         body: Center(
-          child: Text(widget._title),
+          child: HomePage(),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'page/Route.dart';
 import 'fancy_fab.dart';
 import 'tabBarController.dart';
+import 'page/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       ),
 //      home: MyHomePage(),
     home: bottomMenuBarPage(),
+//    home: HomePage(),
     );
   }
 }
