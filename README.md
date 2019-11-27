@@ -23,11 +23,12 @@ samples, guidance on mobile development, and a full API reference.
 [Flutter中文网文档](https://flutterchina.club/docs/)  
 [Dart快速入门](http://dart.goodev.org/guides/get-started)    
 [flutter BottomAppBar 实现不规则底部导航栏](https://blog.csdn.net/zl18603543572/article/details/94876972)  
+[教程：Flutter中的动画](https://flutterchina.club/tutorials/animation/)  
+[Flutter数据存储之shared_preferences](https://www.jianshu.com/p/735b5684e900)
 
 ## Flutter中的动画  
 
 ###资料
-[教程：Flutter中的动画](https://flutterchina.club/tutorials/animation/)  
 Flutter中的动画系统基于Animation对象的，widget可以在build函数中读取Animation对象的当前值， 并且可以监听动画的状态改变。  
 ### Animation\<double>  
 在Flutter中，Animation对象本身和UI渲染没有任何关系。Animation是一个抽象类，它拥有其当前值和状态（完成或停止）。其中一个比较常用的Animation类是Animation<double>。
