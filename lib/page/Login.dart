@@ -5,7 +5,7 @@ class Login extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return null;
+    return LoginState();
   }
 
 }
@@ -14,7 +14,12 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return Container(
+      child: Center(
+        child: Text("填充整个页面"),
+      ),
+      color: Colors.white,
+    );
   }
 
 }

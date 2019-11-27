@@ -3,6 +3,7 @@ import 'page/Route.dart';
 import 'fancy_fab.dart';
 import 'tabBarController.dart';
 import 'page/home.dart';
+import 'page/Login.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,9 +25,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-//      home: MyHomePage(),
-    home: bottomMenuBarPage(),
-//    home: HomePage(),
+//      home: MyHomePage(),//demo
+//    home: bottomMenuBarPage(),//底部导航栏
+//    home: HomePage(), //首页
+      home: Login(),
     );
   }
 }
