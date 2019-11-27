@@ -14,7 +14,7 @@ class HomePageState extends State<HomePage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return new ListView.builder(
-        itemExtent: 210.0,
+//        itemExtent: 210.0,
         itemBuilder: (BuildContext context, int index) {
           return new SizedBox(
             height: 210,
