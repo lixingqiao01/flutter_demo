@@ -44,7 +44,7 @@ Animation对象本身和UI渲染没有任何关系。
 ### AnimationController  
 AnimationController是一个特殊的Animation对象，在屏幕刷新的每一帧，就会生成一个新的值。默认情况下，AnimationController在给定的时间段内会线性的生成从0.0到1.0的数字。 例如，下面代码创建一个Animation对象，但不会启动它  
 
-###Container  
+### Container  
 
 |属性|说明|类型|
 |-|-|-|
