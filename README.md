@@ -44,6 +44,8 @@ Animation对象本身和UI渲染没有任何关系。
 ### AnimationController  
 AnimationController是一个特殊的Animation对象，在屏幕刷新的每一帧，就会生成一个新的值。默认情况下，AnimationController在给定的时间段内会线性的生成从0.0到1.0的数字。 例如，下面代码创建一个Animation对象，但不会启动它  
 
+## Flutter中的布局
+
 ### Container  
 
 |属性|说明|类型|
@@ -56,9 +58,28 @@ AnimationController是一个特殊的Animation对象，在屏幕刷新的每一�
 |foregroundDecoration|绘制在child前面的装饰。|Decoration|
 |width|container的宽度，设置为double.infinity可以强制<br/>在宽度上撑满，不设置，则根据child和父节点两<br/>者一起布局。|double|
 |height|container的高度，设置为double.infinity可以强制<br/>在高度上撑满。|double|
-|constraints|添加到child上额外的约束条件。|BoxConstraints|
+|constraints|要应用于子元素的其他约束。|BoxConstraints|
 |margin|围绕在decoration和child之外的空白区域，不<br/>属于内容区域。|EdgeInsetsGeometry|
 |transform|设置container的变换矩阵。|Matrix4|
 |child|container中的内容widget。|Widget|
+
+## Widgets  
+### Card  
+> material 风格的widget  
+
+
+|属性|说明|类型|
+|---|---|---|
+|key|唯一标识符|String|
+|color|card的背景颜色.如果为空，则使用主题颜色<br/>如果主题颜色为空则使用<br/>[ThemeData.cardColor]|Color|
+|elevation|设置Card的z坐标，控制Card的阴影大小|double|
+|shape|卡片材质的形状|ShapeBorder|
+|borderOnForeground|是否在child前面画出边框形状|bool|
+|margin|卡片周围的空白区域|EdgeInsetsGeometry|
+|clipBehavior|根据这个选项，内容将被剪切(或不被剪切)。|Clip|
+|child|子节点|widget|
+|semanticContainer|此小部件是否表示单个语义容器，<br/>如果为false则表示单个语义节点的集合|bool|
+
+
 
 
