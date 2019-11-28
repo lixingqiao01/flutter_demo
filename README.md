@@ -64,5 +64,6 @@ AnimationController是一个特殊的Animation对象，在屏幕刷新的每一�
 |-|-|-|
 |key|Container唯一标识符|String|
 |alignment|在容器内对齐[child]<br/>如果非空，则容器将展开以填充其父容器,<br/>并根据给定的值将其子容器定位在自身内。<br/>如果传入的约束是无界的，<br/>则子元素将被收缩包装。如果[child]为空则忽略。|AlignmentGeometry|
+|padding|decoration内部的空白区域,如果有child的话，<br/>child位于padding内部。|EdgeInsetsGeometry|
 
 
