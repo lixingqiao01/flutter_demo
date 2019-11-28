@@ -45,20 +45,6 @@ Animation对象本身和UI渲染没有任何关系。
 AnimationController是一个特殊的Animation对象，在屏幕刷新的每一帧，就会生成一个新的值。默认情况下，AnimationController在给定的时间段内会线性的生成从0.0到1.0的数字。 例如，下面代码创建一个Animation对象，但不会启动它  
 
 ###Container  
-|属性|说明|类型|
-|-|-|-|
-|key|Container唯一标识符| String |
-|alignment|在容器内对齐[child]<br/>如果非空，则容器将展开以填充其父容器,<br/>并根据给定的值将其子容器定位在自身内。<br/>如果传入的约束是无界的，<br/>则子元素将被收缩包装。如果[child]为空则忽略。| AlignmentGeometry|  
-|padding|decoration内部的空白区域,如果有child的话，<br/>child位于padding内部。|EdgeInsetsGeometry|  
-|color|用来设置container背景色，<br/>如果foregroundDecoration设置的话，<br/>可能会遮盖color效果。|Color|  
-|decoration|绘制在child后面的装饰，设置了decoration的话，<br/>就不能设置color属性，否则会报错，<br/>此时应该在decoration中进行颜色的设置。|Decoration|  
-|foregroundDecoration|绘制在child前面的装饰。|Decoration|  
-|width|container的宽度，设置为double.infinity可以强制<br/>在宽度上撑满，不设置，则根据child和父节点两<br/>者一起布局。|double|  
-|height|container的高度，设置为double.infinity可以强制<br/>在高度上撑满。|double|  
-|constraints|添加到child上额外的约束条件。|BoxConstraints|  
-|margin|围绕在decoration和child之外的空白区域，不<br/>属于内容区域。|EdgeInsetsGeometry|  
-|transform|设置container的变换矩阵。|Matrix4|  
-|child|container中的内容widget。|Widget|  
 
 |属性|说明|类型|
 |-|-|-|
