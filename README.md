@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+￿This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
@@ -85,7 +85,7 @@ AnimationController是一个特殊的Animation对象，在屏幕刷新的每一�
 
 |属性|说明|类型|
 |---|---|---|
-|width|宽度|double|
+|width|宽度设置为infinity，标识无穷大|double|
 |height|高度|double|
 
 
