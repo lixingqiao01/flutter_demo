@@ -73,12 +73,21 @@ AnimationController是一个特殊的Animation对象，在屏幕刷新的每一�
 |key|唯一标识符|String|
 |color|card的背景颜色.如果为空，则使用主题颜色<br/>如果主题颜色为空则使用<br/>[ThemeData.cardColor]|Color|
 |elevation|设置Card的z坐标，控制Card的阴影大小|double|
-|shape|卡片材质的形状|ShapeBorder|
+|shape|Card的形状|ShapeBorder|
 |borderOnForeground|是否在child前面画出边框形状|bool|
 |margin|卡片周围的空白区域|EdgeInsetsGeometry|
 |clipBehavior|根据这个选项，内容将被剪切(或不被剪切)。|Clip|
 |child|子节点|widget|
 |semanticContainer|此小部件是否表示单个语义容器，<br/>如果为false则表示单个语义节点的集合|bool|
+
+### SizedBox  
+> 强制子节点使用SizedBox的尺寸
+
+|属性|说明|类型|
+|---|---|---|
+|width|宽度|double|
+|height|高度|double|
+
 
 
 
