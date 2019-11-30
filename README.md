@@ -24,7 +24,10 @@ samples, guidance on mobile development, and a full API reference.
 [Dart快速入门](http://dart.goodev.org/guides/get-started)    
 [flutter BottomAppBar 实现不规则底部导航栏](https://blog.csdn.net/zl18603543572/article/details/94876972)  
 [教程：Flutter中的动画](https://flutterchina.club/tutorials/animation/)  
-[Flutter数据存储之shared_preferences](https://www.jianshu.com/p/735b5684e900)
+[Flutter数据存储之shared_preferences](https://www.jianshu.com/p/735b5684e900)  
+
+### 页面跳转
+[Flutter 之Router 页面跳转](https://www.jianshu.com/p/6df3349268f3)
 
 ## Flutter中的动画  
 

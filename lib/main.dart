@@ -5,7 +5,11 @@ import 'tabBarController.dart';
 import 'page/home.dart';
 import 'page/Login.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
+
+void main() {
+  return runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
