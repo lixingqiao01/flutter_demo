@@ -8,6 +8,9 @@ import 'page/Login.dart';
 //void main() => runApp(MyApp());
 
 void main() {
+  String str;
+  str = "aaaa";
+  print(str + "bbbbb");
   return runApp(MyApp());
 }
 

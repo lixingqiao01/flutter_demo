@@ -17,6 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## flutte资料  
 
+[package仓库](https://pub.flutter-io.cn/packages)  
 [floatingActionButton动画和TextOverflow踩坑](https://blog.csdn.net/qq_41912380/article/details/97612904)  
 [Flutter炫酷动画登陆按钮AnimatedLoginButton](https://blog.csdn.net/baoolong/article/details/86534154)  
 [谈一谈Flutter中的共享元素动画Hero](https://juejin.im/post/5bcd72aaf265da0a8e6dbe92)  
@@ -89,7 +90,13 @@ AnimationController是一个特殊的Animation对象，在屏幕刷新的每一�
 |属性|说明|类型|
 |---|---|---|
 |width|宽度设置为infinity，标识无穷大|double|
-|height|高度|double|
+|height|高度|double|  
+
+## 数据持久化
+
+### shared_preferences  
+- 资料  
+[Flutter数据存储之shared_preferences](https://www.jianshu.com/p/735b5684e900)
 
 
 

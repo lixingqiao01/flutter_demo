@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_demo/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_demo/tabBarController.dart';
+import '../Until/DioUntil.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -19,11 +21,14 @@ class LoginState extends State<Login> {
 
   FocusNode _focusNode = FocusNode();
 
+  bool _saving = false;
+  final snackBar = new SnackBar(content: new Text("snackBar"));
+
   @override
   void initState() {
     // TODO: implement initState
-    _focusNode.addListener((){
-      if(!_focusNode.hasFocus) {
+    _focusNode.addListener(() {
+      if (!_focusNode.hasFocus) {
         //获取焦点
       }
     });
@@ -35,112 +40,144 @@ class LoginState extends State<Login> {
     // TODO: implement build
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: (){
+      onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
       },
-      child: Container(
+      child: _modalProgressHUD()
+    );
+  }
+
+  Widget _container(){
+    return Container(
 //      constraints: BoxConstraints(minHeight: 0.0),
-        child: Center(
-          child: SizedBox(
-              height: 400,
-              child: FractionallySizedBox(
-                widthFactor: 0.8,
-                child:Column(
-                  children: <Widget>[
-                    SizedBox(
-                      width: double.infinity,
-                      height: 300,
-                      child: Card(
-                          elevation: 15.0,
-                          shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                          child: Padding(
-                            padding: EdgeInsets.all(20),
-                            child: Column(
-                              children: <Widget>[
-                                Text("title/icon"),
-                                TextField(
-                                  decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      labelText: "请输入电话号码",
-                                      prefixIcon: Icon(Icons.phone_iphone),
+      child: _loginView(),
+      color: Colors.white,
+    );
+  }
+
+  Widget _scaffold(){
+    return Scaffold(
+      body: _loginView(),
+      backgroundColor: Colors.white,
+    );
+  }
+
+  Widget _modalProgressHUD(){
+    return ModalProgressHUD(
+      child: _scaffold(),
+      inAsyncCall: _saving,
+    );
+  }
+
+  Widget _loginView() {
+    return Center(
+      child: SizedBox(
+          height: 400,
+          child: FractionallySizedBox(
+              widthFactor: 0.8,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    width: double.infinity,
+                    height: 300,
+                    child: Card(
+                        elevation: 15.0,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(14.0))),
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Column(
+                            children: <Widget>[
+                              Text("title/icon"),
+                              TextField(
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  labelText: "请输入电话号码",
+                                  prefixIcon: Icon(Icons.phone_iphone),
 //                        helperText: "aaaaaa"
 //                                      errorText: _error
-                                  ),
-                                  onChanged: (text) {
-                                    print(text);
-                                    _username = text;
-                                  },
                                 ),
-                                TextField(
-                                  decoration: InputDecoration(
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                    labelText: "请输入用户密码",
-                                    prefixIcon: Icon(Icons.vpn_key),
-//                          helperText: "aaaaaa"
-                                  ),
-                                  onChanged: (text) {
-                                    _password = text;
-                                  },
-                                  obscureText: true,
+                                onChanged: (text) {
+                                  print(text);
+                                  _username = text;
+                                },
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  labelText: "请输入用户密码",
+                                  prefixIcon: Icon(Icons.vpn_key),
                                 ),
-                                Expanded(
-                                  child: Center(
-                                    child: SizedBox(
-                                      width: double.infinity,
+                                onChanged: (text) {
+                                  _password = text;
+                                },
+                                obscureText: true,
+                              ),
+                              Expanded(
+                                child: Center(
+                                  child: SizedBox(
+                                    width: double.infinity,
 //                            height: 30,
-                                      child: MaterialButton(
-                                        color: Colors.blue,
-                                        textColor: Colors.white,
-                                        child: Text('登录'),
-                                        onPressed: () {
-                                          print("点击了登录");
-                                          FocusScope.of(context).requestFocus(FocusNode());
-                                          _loginWithDio().then((response){
-                                            print(response);
-                                          });
-//                                          runApp(MyApp());
+                                    child: MaterialButton(
+                                      color: Colors.blue,
+                                      textColor: Colors.white,
+                                      child: Text('登录'),
+                                      onPressed: () {
+                                        print("点击了登录");
+                                        setState(() {
+                                          _saving = true;
+                                        });
+                                        FocusScope.of(context).requestFocus(FocusNode());
+                                        DioUntil().login(_username, _password).then((response) {
+                                          print(response);
+//                                              status = response.data["status"];
+                                          if (response.data["status"] == 200) {
+                                            print("请求成功");
+//                                            Scaffold.of(context).showSnackBar(snackBar);
+                                          } else {
+                                            print("请求失败");
+                                          }
+                                        }).whenComplete((){
                                           setState(() {
-                                            _error = "用户名错误";
+                                            _saving = false;
                                           });
-                                        },
-                                      ),
+                                        });
+//                                            _loginWithDio().then((response) {
+//                                              print(response);
+//                                            });
+//                                          runApp(MyApp());
+                                        setState(() {
+                                          _error = "用户名错误";
+                                        });
+                                      },
                                     ),
                                   ),
-                                )
-                              ],
-                            ),
-                          )
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FlatButton(
+                        child: Text("前往注册"),
+                        textColor: Colors.blue,
+                        onPressed: () {},
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        FlatButton(
-                          child: Text("前往注册"),
-                          textColor: Colors.blue,
-                          onPressed: (){
-
-                          },
-                        ),
-                        FlatButton(
-                          child: Text("忘记密码？"),
-                          textColor: Colors.blue,
-                          onPressed: (){
-
-                          },
-                        )
-                      ],
-                    )
-                  ],
-                )
-              )
-          ),
-        ),
-        color: Colors.white,
-      ),
+                      FlatButton(
+                        child: Text("忘记密码？"),
+                        textColor: Colors.blue,
+                        onPressed: () {},
+                      )
+                    ],
+                  )
+                ],
+              ))),
     );
   }
 
@@ -150,7 +187,6 @@ class LoginState extends State<Login> {
     try {
       response = await dio.post("http://120.79.128.40:8080/gift/api/login",
           data: {"username": _username, "password": _password});
-//      print(response);
       return response;
     } on DioError catch (e) {
       print(e);
