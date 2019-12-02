@@ -195,7 +195,7 @@ class LoginState extends State<Login> {
     Response response;
     Dio dio = Dio();
     try {
-      response = await dio.post("http://120.79.128.40:8080/gift/api/login",
+      response = await dio.post("http://localhost:8080/gift_war/api/login",
           data: {"username": _username, "password": _password});
       return response;
     } on DioError catch (e) {
