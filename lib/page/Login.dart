@@ -56,7 +56,6 @@ class LoginState extends State<Login> {
 
   Widget _container(){
     return Container(
-//      constraints: BoxConstraints(minHeight: 0.0),
       child: _loginView(),
       color: Colors.white,
     );
