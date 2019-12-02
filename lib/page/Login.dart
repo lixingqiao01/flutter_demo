@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_demo/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_demo/tabBarController.dart';
 import '../Until/DioUntil.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import '../Until/sharedPreferencesUntil.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -38,12 +38,19 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    return MaterialApp(
+      title: "Login",
+      home: _gestureDetector(),
+    );
+  }
+
+  Widget _gestureDetector(){
     return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
-      child: _modalProgressHUD()
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+          FocusScope.of(context).requestFocus(FocusNode());
+        },
+        child: _modalProgressHUD()
     );
   }
 
@@ -134,11 +141,15 @@ class LoginState extends State<Login> {
                                         DioUntil().login(_username, _password).then((response) {
                                           print(response);
 //                                              status = response.data["status"];
-                                          if (response.data["status"] == 200) {
-                                            print("请求成功");
-//                                            Scaffold.of(context).showSnackBar(snackBar);
+                                          if (response.data["status"] == 10000) {
+                                            print(response.data["response"]);
+                                            //登录成功后保存用户token
+                                            sharedPreferencesUntil().setToken(response.data["response"]);
+
+                                          } else if (response.data["status"] == 10001) {
+                                            print("当前用户还未注册");
                                           } else {
-                                            print("请求失败");
+                                            print("密码错误");
                                           }
                                         }).whenComplete((){
                                           setState(() {

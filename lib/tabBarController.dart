@@ -21,7 +21,14 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return buildBottomTabScaffold();
+    return materialApp();
+  }
+
+  Widget materialApp(){
+    return MaterialApp(
+      title: "tabbar",
+      home: buildBottomTabScaffold(),
+    );
   }
 
   int currentIndex = 0;

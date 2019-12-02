@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'page/Route.dart';
 import 'fancy_fab.dart';
-import 'tabBarController.dart';
-import 'page/home.dart';
 import 'page/Login.dart';
+import 'page/Launch.dart';
+import 'Until/sharedPreferencesUntil.dart';
 
 //void main() => runApp(MyApp());
 
 void main() {
-  String str;
-  str = "aaaa";
-  print(str + "bbbbb");
-  return runApp(MyApp());
+  sharedPreferencesUntil();
+  return runApp(Launch());
 }
 
 class MyApp extends StatelessWidget {

@@ -10,11 +10,15 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage>{
+
+  final int _count = 0;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new ListView.builder(
 //        itemExtent: 210.0,
+        itemCount: _count,
         itemBuilder: (BuildContext context, int index) {
           return new SizedBox(
             height: 210,
