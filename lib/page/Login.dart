@@ -144,6 +144,7 @@ class LoginState extends State<Login> {
                                             print(response.data["response"]);
                                             //登录成功后保存用户token
                                             sharedPreferencesUntil().setToken(response.data["response"]);
+                                            runApp(bottomMenuBarPage());
 
                                           } else if (response.data["status"] == 10001) {
                                             print("当前用户还未注册");

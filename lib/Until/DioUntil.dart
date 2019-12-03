@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import '../Until/sharedPreferencesUntil.dart';
 
 class DioUntil {
-  final _baseUrl_company = "http://localhost:8080/gift_war_exploded"; //公司网址
+  final _baseUrl_company = "http://192.168.0.115:8080/gift_war_exploded"; //公司网址
   final _baseUrl_Aliyun = "http://120.79.128.40:8080/gift"; //阿里云地址
   final _baseUrl_home = "http://localhost:8080/gift_war"; //家中地址
   /*
@@ -23,7 +23,7 @@ class DioUntil {
     //拦截器
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-      options.path = _baseUrl_home + options.path;
+      options.path = _baseUrl_company + options.path;
       options.data = json.encode(options.data);
       options.headers = {
         "authorization": sharedPreferencesUntil().token,
@@ -58,7 +58,7 @@ class DioUntil {
 
   Future getNotesList() async {
     return await _getDio().post(_getNotesList).then((res){
-      return json.decode(json.encode(res.data));
+      return res.data;
     });
   }
 }

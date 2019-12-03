@@ -96,7 +96,24 @@ AnimationController是一个特殊的Animation对象，在屏幕刷新的每一�
 
 ### shared_preferences  
 - 资料  
-[Flutter数据存储之shared_preferences](https://www.jianshu.com/p/735b5684e900)
+[Flutter数据存储之shared_preferences](https://www.jianshu.com/p/735b5684e900)  
+## Notes
+
+### 监听build完成
+```dart
+    
+ WidgetsBinding _widgetsBinding;
+_widgetsBinding = WidgetsBinding.instance;
+_widgetsBinding.addPostFrameCallback((callback){
+      _request();
+    });
+```  
+
+## 适配 
+
+### 资料  
+
+[屏幕适配 flutter_screenutil](https://www.jianshu.com/p/3f6770f823dd)
 
 
 
