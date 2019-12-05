@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Until/DioUntil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final int _count = 10;
   var items = [];
   WidgetsBinding _widgetsBinding;
 
@@ -30,8 +30,12 @@ class HomePageState extends State<HomePage> {
 
   Widget _sizedBox(int index) {
     return SizedBox(
-//      height: 210,
-      child: _card(index),
+      height: ScreenUtil().setHeight(250),
+//    height: 250,
+      child: Scaffold(
+        backgroundColor: Colors.amberAccent,
+        body: _card(index),
+      ),
     );
   }
 
@@ -49,8 +53,8 @@ class HomePageState extends State<HomePage> {
       children: <Widget>[
 //        _listTitle(index,"标题"),
         _cellTop(),
-        new Divider(),
-        _listTitle(index, "内容一"),
+//        new Divider(),
+//        _listTitle(index, "内容一"),
       ],
     );
   }
@@ -58,68 +62,76 @@ class HomePageState extends State<HomePage> {
   Widget _cellTop(){
     return SizedBox(
       width: double.infinity,
-//      height: 120,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
+      height: ScreenUtil().setHeight(230),
+      child: Scaffold(
+        backgroundColor: Colors.cyan,
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
 
-          Expanded(
-            child: Center(
+            Expanded(
+              child: Center(
 //            widthFactor: ,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("合计"),
-                  Text("99999")
-                ],
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "合计",
+                      style: TextStyle(
+                          fontSize: ScreenUtil.getInstance().setSp(24)
+                      ),
+                    ),
+                    Text("99999")
+                  ],
+                ),
               ),
+              flex: 1,
             ),
-            flex: 1,
-          ),
 
 
-          Expanded(
-            child: Center(
+            Expanded(
+              child: Center(
 //            widthFactor: ,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
                       "礼薄一",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20
+                      ),
                     ),
-                  ),
-                  Text(
-                    "囍",
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 35
-                    ),
-                  )
-                ],
+                    Text(
+                      "囍",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 35
+                      ),
+                    )
+                  ],
+                ),
               ),
+              flex: 1,
             ),
-            flex: 1,
-          ),
 
 
-          Expanded(
-            child: Center(
+            Expanded(
+              child: Center(
 //            widthFactor: ,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("合计"),
-                  Text("2019年12月03日")
-                ],
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("合计"),
+                    Text("2019年12月03日")
+                  ],
+                ),
               ),
+              flex: 1,
             ),
-            flex: 1,
-          ),
-        ],
-      ),
+          ],
+        ),
+      )
     );
   }
 
@@ -151,6 +163,8 @@ class HomePageState extends State<HomePage> {
     _widgetsBinding = WidgetsBinding.instance;
     _widgetsBinding.addPostFrameCallback((callback){
       _request();
+
+      ScreenUtil.instance = ScreenUtil(width: 750, height: 1334, allowFontScaling: true)..init(context);
     });
   }
 }

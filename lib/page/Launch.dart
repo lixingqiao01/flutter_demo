@@ -18,11 +18,13 @@ class Launch extends StatefulWidget{
 }
 
 class LaunchState extends State<Launch>{
+
+  WidgetsBinding _widgetsBinding;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
-//    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334, allowFontScaling: true)..init(context);
     return MaterialApp(
       title: "Launch",
       home: launchContent(context),
@@ -62,6 +64,19 @@ class LaunchState extends State<Launch>{
         ),
       ),
     );
+  }
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _widgetsBinding = WidgetsBinding.instance;
+    _widgetsBinding.addPostFrameCallback((callback){
+//      _request();
+
+    });
   }
 
 }

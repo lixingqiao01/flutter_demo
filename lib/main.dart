@@ -4,11 +4,13 @@ import 'fancy_fab.dart';
 import 'page/Login.dart';
 import 'page/Launch.dart';
 import 'Until/sharedPreferencesUntil.dart';
+import 'package:flutter/rendering.dart';
 
 //void main() => runApp(MyApp());
 
 void main() {
   sharedPreferencesUntil();
+  debugPaintSizeEnabled = !true;
   return runApp(Launch());
 }
 

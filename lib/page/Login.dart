@@ -5,6 +5,7 @@ import 'package:flutter_demo/tabBarController.dart';
 import '../Until/DioUntil.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import '../Until/sharedPreferencesUntil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -38,6 +39,7 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     return MaterialApp(
       title: "Login",
       home: _gestureDetector(),
@@ -45,6 +47,7 @@ class LoginState extends State<Login> {
   }
 
   Widget _gestureDetector(){
+
     return GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
@@ -144,6 +147,7 @@ class LoginState extends State<Login> {
                                             print(response.data["response"]);
                                             //登录成功后保存用户token
                                             sharedPreferencesUntil().setToken(response.data["response"]);
+                                            sharedPreferencesUntil().token = response.data["response"];
                                             runApp(bottomMenuBarPage());
 
                                           } else if (response.data["status"] == 10001) {
