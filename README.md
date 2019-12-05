@@ -17,6 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## flutte资料  
 
+[flutter 卡在Running Gradle task 'assembleDebug'...](https://www.cnblogs.com/wupeng88/p/11455874.html)
 [package仓库](https://pub.flutter-io.cn/packages)  
 [floatingActionButton动画和TextOverflow踩坑](https://blog.csdn.net/qq_41912380/article/details/97612904)  
 [Flutter炫酷动画登陆按钮AnimatedLoginButton](https://blog.csdn.net/baoolong/article/details/86534154)  
