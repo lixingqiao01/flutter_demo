@@ -39,11 +39,11 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
-    return MaterialApp(
-      title: "Login",
-      home: _gestureDetector(),
-    );
+//    return MaterialApp(
+//      title: "Login",
+//      home: _gestureDetector(),
+//    );
+  return _gestureDetector();
   }
 
   Widget _gestureDetector(){
@@ -148,7 +148,8 @@ class LoginState extends State<Login> {
                                             //登录成功后保存用户token
                                             sharedPreferencesUntil().setToken(response.data["response"]);
                                             sharedPreferencesUntil().token = response.data["response"];
-                                            runApp(bottomMenuBarPage());
+//                                            runApp(bottomMenuBarPage());
+                                            Navigator.pushNamed(context, "/home");
 
                                           } else if (response.data["status"] == 10001) {
                                             print("当前用户还未注册");

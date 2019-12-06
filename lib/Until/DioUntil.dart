@@ -23,7 +23,7 @@ class DioUntil {
     //拦截器
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-      options.path = _baseUrl_company + options.path;
+      options.path = _baseUrl_home + options.path;
       options.data = json.encode(options.data);
       options.headers = {
         "authorization": sharedPreferencesUntil().token,

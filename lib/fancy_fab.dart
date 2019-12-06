@@ -109,8 +109,10 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
       child: FloatingActionButton(
         onPressed: null,
         tooltip: 'Add',
+        heroTag: "add1",
         child: Icon(Icons.person_add),
       ),
+//      child: Text("aaaaa"),
     );
   }
 
@@ -119,6 +121,7 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
       child: FloatingActionButton(
         onPressed: null,
         tooltip: 'Image',
+        heroTag: "image1",
         child: Icon(Icons.person_pin),
       ),
     );
@@ -129,6 +132,7 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
       child: FloatingActionButton(
         onPressed: null,
         tooltip: 'Inbox',
+        heroTag: "inbox1",
         child: Icon(Icons.playlist_add),
       ),
     );

@@ -22,12 +22,13 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return materialApp();
+//    return materialApp();
+    return buildBottomTabScaffold();
   }
 
   Widget materialApp(){
     return MaterialApp(
-      title: "tabbar",
+      title: "bottomMenuBarPageState_tabbar",
       home: buildBottomTabScaffold(),
     );
   }
@@ -46,6 +47,7 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
       height: 100,
       child: Scaffold(
         body: pages[currentIndex],
+//        body: Text("aaaaa"),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 //        floatingActionButton: FloatingActionButton(
 //          child: const Icon(Icons.add),

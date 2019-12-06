@@ -33,7 +33,6 @@ class HomePageState extends State<HomePage> {
   Widget _sizedBox(int index) {
     return SizedBox(
       height: ScreenUtil().setHeight(250),
-//    height: 250,
       child: _card(index),
     );
   }
