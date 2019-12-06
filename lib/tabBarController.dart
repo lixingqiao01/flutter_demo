@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'fancy_fab.dart';
 import 'page/home.dart';
+import 'page/mine.dart';
 
 class bottomMenuBarPage extends StatefulWidget {
   bottomMenuBarPage();
@@ -34,10 +35,10 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
   int currentIndex = 0;
 
   final pages = [
-    ChildItemView("首页"),
-    ChildItemView("发现"),
-    ChildItemView("动态"),
-    ChildItemView("我的")
+    ChildItemView("首页",HomePage()),
+    ChildItemView("发现",HomePage()),
+    ChildItemView("动态",HomePage()),
+    ChildItemView("我的",MineStateFulWidget())
   ];
 
   Widget buildBottomTabScaffold() {
@@ -135,8 +136,10 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
 
 class ChildItemView extends StatefulWidget {
   String _title;
+  Widget _body;
 
-  ChildItemView(this._title);
+//  ChildItemView(this._title);
+  ChildItemView(this._title,this._body);
 
   @override
   _ChildItemViewState createState() => _ChildItemViewState();
@@ -154,7 +157,7 @@ class _ChildItemViewState extends State<ChildItemView> {
           title: new Text(widget._title),
         ),
         body: Center(
-          child: HomePage(),
+          child: widget._body,
         ),
       ),
     );
