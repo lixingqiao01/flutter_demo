@@ -39,11 +39,11 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-//    return MaterialApp(
-//      title: "Login",
-//      home: _gestureDetector(),
-//    );
-  return _gestureDetector();
+    return MaterialApp(
+      title: "Login",
+      home: _gestureDetector(),
+    );
+//  return _gestureDetector();
   }
 
   Widget _gestureDetector(){

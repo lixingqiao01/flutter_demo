@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/page/AddNotes.dart';
 
 class FancyFab extends StatefulWidget {
-
   final Function() onPressed;
   final String tooltip;
   final IconData icon;
@@ -12,8 +12,8 @@ class FancyFab extends StatefulWidget {
   _FancyFabState createState() => _FancyFabState();
 }
 
-class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin{
-
+class _FancyFabState extends State<FancyFab>
+    with SingleTickerProviderStateMixin {
   //判断菜单是否已经打开
   bool isOpened = false;
 
@@ -27,19 +27,28 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
 
   Curve _curve = Curves.bounceIn;
   double _fabHeight = 56.0;
+  GlobalKey anchorKey = GlobalKey();
+
+//  WidgetsBinding _widgetsBinding;
 
 //  final CurvedAnimation curve = new CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
   @override
   void initState() {
     // TODO: implement initState
-    _animationController = AnimationController(vsync: this,duration: Duration(milliseconds: 200))..addListener((){
-      setState(() {
 
-      });
+//    _widgetsBinding = WidgetsBinding.instance;
+//    _widgetsBinding.addPostFrameCallback((callback) {
+//      print("floatingButton build完成");
+//    });
 
-    });
-    _animationIcon = Tween<double>(begin: 0.0,end: 1.0).animate(_animationController);
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 200))
+          ..addListener(() {
+            setState(() {});
+          });
+    _animationIcon =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
     _animationColor = ColorTween(
       begin: Colors.blue,
       end: Colors.red,
@@ -56,35 +65,16 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
       begin: 0.0,
       end: -100.0,
     ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Interval(
-        0.0,
-        0.75,
-        curve: _curve
-      )
-    ));
-    _translateImageX = Tween<double>(
-      begin: 0.0,
-      end: -86.6
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Interval(
-        0.0,
-        0.75,
-        curve: _curve
-      )
-    ));
-    _translateImageY = Tween<double>(
-      begin: 0.0,
-      end: -50
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Interval(
-        0.0,
-        0.75,
-        curve: _curve
-      )
-    ));
+        parent: _animationController,
+        curve: Interval(0.0, 0.75, curve: _curve)));
+    _translateImageX = Tween<double>(begin: 0.0, end: -86.6).animate(
+        CurvedAnimation(
+            parent: _animationController,
+            curve: Interval(0.0, 0.75, curve: _curve)));
+    _translateImageY = Tween<double>(begin: 0.0, end: -50).animate(
+        CurvedAnimation(
+            parent: _animationController,
+            curve: Interval(0.0, 0.75, curve: _curve)));
     super.initState();
   }
 
@@ -95,7 +85,7 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-  animate(){
+  animate() {
     if (!isOpened) {
       _animationController.forward();
     } else {
@@ -107,19 +97,21 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
   Widget add() {
     return new Container(
       child: FloatingActionButton(
-        onPressed: null,
+        onPressed: navigaitonPush,
         tooltip: 'Add',
         heroTag: "add1",
+        key: anchorKey,
         child: Icon(Icons.person_add),
       ),
-//      child: Text("aaaaa"),
     );
   }
 
   Widget image() {
     return new Container(
       child: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          print("aaaaaaaa");
+        },
         tooltip: 'Image',
         heroTag: "image1",
         child: Icon(Icons.person_pin),
@@ -130,7 +122,9 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
   Widget inbox() {
     return new Container(
       child: FloatingActionButton(
-        onPressed: null,
+        onPressed: (){
+          print("aaaaaa");
+        },
         tooltip: 'Inbox',
         heroTag: "inbox1",
         child: Icon(Icons.playlist_add),
@@ -138,7 +132,7 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
     );
   }
 
-  Widget toggle(){
+  Widget toggle() {
     return FloatingActionButton(
       backgroundColor: _animationColor.value,
       onPressed: animate,
@@ -148,6 +142,16 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
         progress: _animationIcon,
       ),
     );
+  }
+
+  navigaitonPush() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) {
+              return AddNotes();
+            },
+            fullscreenDialog: true));
   }
 
   @override
@@ -173,23 +177,29 @@ class _FancyFabState extends State<FancyFab> with SingleTickerProviderStateMixin
 //        toggle(),
 //      ],
 //    );
-      return Stack(
-        children: <Widget>[
-          Transform(
-            transform: Matrix4.translationValues(0.0, _translateAddY.value, 0.0),
-            child: add(),
-          ),
-          Transform(
-            transform: Matrix4.translationValues(_translateImageX.value, _translateImageY.value, 0.0),
-            child: image(),
-          ),
-          Transform(
-            transform: Matrix4.translationValues(-_translateImageX.value, _translateImageY.value, 0.0),
-            child: inbox(),
-          ),
-          toggle(),
-        ],
-      );
-  }
+    return Stack(
+      children: <Widget>[
+        Transform(
+          transform: Matrix4.translationValues(0.0, _translateAddY.value, 0.0),
+          child: add(),
+        ),
+        Transform(
+          transform: Matrix4.translationValues(
+              _translateImageX.value, _translateImageY.value, 0.0),
+          child: image(),
+        ),
+        Transform(
+          transform: Matrix4.translationValues(
+              -_translateImageX.value, _translateImageY.value, 0.0),
+          child: inbox(),
+        ),
+        toggle()
+//        Transform(
+//          transform: Matrix4.translationValues(0, 0, 0),
+//          child: toggle(),
+//        )
 
+      ],
+    );
+  }
 }

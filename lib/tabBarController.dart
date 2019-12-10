@@ -23,7 +23,7 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
 //    return materialApp();
-    return buildBottomTabScaffold();
+    return materialApp();
   }
 
   Widget materialApp(){
@@ -43,35 +43,43 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
   ];
 
   Widget buildBottomTabScaffold() {
-    return SizedBox(
-      height: 100,
-      child: Scaffold(
-        body: pages[currentIndex],
-//        body: Text("aaaaa"),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-//        floatingActionButton: FloatingActionButton(
-//          child: const Icon(Icons.add),
-//          onPressed: (){
-//            print("add press");
-//          },
-//        ),
-        floatingActionButton: FancyFab(),
+    return _scaffold();
+  }
 
-        bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 6.0,
-          color: Colors.white,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              buildBotomItem(currentIndex, 0, Icons.home, "首页"),
-              buildBotomItem(currentIndex, 1, Icons.library_music, "发现"),
-              buildBotomItem(currentIndex, -1, null, "发现"),
-              buildBotomItem(currentIndex, 2, Icons.email, "消息"),
-              buildBotomItem(currentIndex, 3, Icons.person, "我的"),
-            ],
-          ),
+  Widget _sizedBox(){
+    return SizedBox(
+      height: 200,
+      child: _scaffold(),
+    );
+  }
+
+  Widget _body_scaffold(){
+    return Scaffold(
+      body: Text("aaaaa"),
+    );
+  }
+
+  Widget _scaffold(){
+    return Scaffold(
+//      body: pages[currentIndex],
+      body: _body_scaffold(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FancyFab(),
+
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 6.0,
+        color: Colors.white,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            buildBotomItem(currentIndex, 0, Icons.home, "首页"),
+            buildBotomItem(currentIndex, 1, Icons.library_music, "发现"),
+            buildBotomItem(currentIndex, -1, null, "发现"),
+            buildBotomItem(currentIndex, 2, Icons.email, "消息"),
+            buildBotomItem(currentIndex, 3, Icons.person, "我的"),
+          ],
         ),
       ),
     );

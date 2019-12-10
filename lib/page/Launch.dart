@@ -32,13 +32,13 @@ class LaunchState extends State<Launch> {
     sharedPreferencesUntil().getToken().then((token) {
       print(token);
       if (token == null) {
-//        runApp(Login());
-        Navigator.pushNamed(context, "/login");
+        runApp(Login());
+//        Navigator.pushNamed(context, "/login");
       } else {
         DioUntil().getUserInfo().then((response){
           User().formatJson(response);
-//          runApp(bottomMenuBarPage());
-        Navigator.pushNamed(context, "/home");
+          runApp(bottomMenuBarPage());
+//        Navigator.pushNamed(context, "/home");
 //          Navigator.push(context, MaterialPageRoute(builder: (context) {
 //            return bottomMenuBarPage();
 //          },fullscreenDialog: true));

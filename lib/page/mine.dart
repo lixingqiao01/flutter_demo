@@ -26,4 +26,10 @@ class MineState extends State<MineStateFulWidget>{
     );
   }
 
+  Widget listTitle(int index) {
+    if (index == 0) {
+    }
+    return null;
+  }
+
 }

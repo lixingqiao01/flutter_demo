@@ -50,8 +50,30 @@ class HomePageState extends State<HomePage> {
       children: <Widget>[
 //        _listTitle(index,"标题"),
         _cellTop(),
-//        new Divider(),
-//        _listTitle(index, "内容一"),
+        new Divider(),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 14.0
+          ),
+          child: Row(
+            children: <Widget>[
+              Text(
+                  "备注：",
+                style: TextStyle(
+                  fontSize: ScreenUtil.getInstance().setSp(30),
+                  color: Colors.grey
+                ),
+              ),
+              Text(
+                  "我是备注消息",
+                style: TextStyle(
+                  fontSize: ScreenUtil.getInstance().setSp(30),
+                  color: Colors.grey
+                ),
+              )
+            ],
+          ),
+        )
       ],
     );
   }
@@ -59,7 +81,7 @@ class HomePageState extends State<HomePage> {
   Widget _cellTop() {
     return SizedBox(
       width: double.infinity,
-      height: ScreenUtil().setHeight(230),
+      height: ScreenUtil().setHeight(160),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
