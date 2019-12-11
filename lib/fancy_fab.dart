@@ -137,6 +137,7 @@ class _FancyFabState extends State<FancyFab>
       backgroundColor: _animationColor.value,
       onPressed: animate,
       tooltip: 'Toggle',
+      heroTag: "toggle1",
       child: AnimatedIcon(
         icon: AnimatedIcons.add_event,
         progress: _animationIcon,

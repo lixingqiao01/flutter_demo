@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Until/DioUntil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../BLL/HomeBLL.dart';
+import 'AddNotes.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,7 +20,34 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return _listView();
+    return _scaffold();
+  }
+
+  Widget _scaffold(){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("薄"),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.note_add),
+            onPressed:  rightNavigatonBarAction,
+          )
+        ],
+      ),
+      body: _listView(),
+    );
+  }
+
+  rightNavigatonBarAction(){
+    print("aaaaa");
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) {
+              return AddNotes();
+            },
+            fullscreenDialog: true));
   }
 
   Widget _listView() {

@@ -20,6 +20,10 @@ class AddNotesState extends State<AddNotes>{
 
   Widget _scaffold(){
     return Scaffold(
+      appBar: AppBar(
+        title: Text("添加"),
+        centerTitle: true,
+      ),
       body: _column(),
     );
   }
@@ -27,11 +31,56 @@ class AddNotesState extends State<AddNotes>{
   Widget _column(){
     return Column(
       children: <Widget>[
-        _topCardSizedBoxCell()
+        _topCardSizedBoxCell(),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                    labelText: "请输入礼金薄名称"
+                ),
+                controller: TextEditingController.fromValue(TextEditingValue(
+                  text: "asdasda"
+                )),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                    labelText: "请礼金簿类别"
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                    labelText: "请选择时间"
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                    labelText: "请输入备注信息"
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: MaterialButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  child: Text("提交"),
+                  onPressed: (){
+
+                  },
+                ),
+              )
+            ],
+          ),
+        )
       ],
     );
   }
 
+
+
+
+  //卡片
   Widget _topCardSizedBoxCell(){
     return SizedBox(
       height: ScreenUtil.getInstance().setHeight(250),

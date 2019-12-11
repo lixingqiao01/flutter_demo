@@ -37,6 +37,7 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
 
   final pages = [
     ChildItemView("首页",HomePage()),
+//    HomePage,
     ChildItemView("发现",HomePage()),
     ChildItemView("动态",HomePage()),
     ChildItemView("我的",MineStateFulWidget())
@@ -61,10 +62,10 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
 
   Widget _scaffold(){
     return Scaffold(
-//      body: pages[currentIndex],
-      body: _body_scaffold(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FancyFab(),
+      body: pages[currentIndex],
+//      body: _body_scaffold(),
+//      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+//      floatingActionButton: FancyFab(),
 
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -74,9 +75,9 @@ class bottomMenuBarPageState extends State<bottomMenuBarPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            buildBotomItem(currentIndex, 0, Icons.home, "首页"),
+            buildBotomItem(currentIndex, 0, Icons.home, "薄"),
             buildBotomItem(currentIndex, 1, Icons.library_music, "发现"),
-            buildBotomItem(currentIndex, -1, null, "发现"),
+//            buildBotomItem(currentIndex, -1, null, "发现"),
             buildBotomItem(currentIndex, 2, Icons.email, "消息"),
             buildBotomItem(currentIndex, 3, Icons.person, "我的"),
           ],
@@ -162,14 +163,7 @@ class _ChildItemViewState extends State<ChildItemView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget._title),
-        ),
-        body: Center(
-          child: widget._body,
-        ),
-      ),
+      child: widget._body,
     );
   }
 }
